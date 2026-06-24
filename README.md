@@ -72,7 +72,7 @@ worked edge cases: `planning.md §3`.
   anything under 5 or over 80 words → a 570-comment length-stratified candidate set.
   ([`src/collect_data.py`](src/collect_data.py))
 - **Labeling process.** Each candidate was labeled by **two independent LLM annotator passes**
-  applying the `planning.md` rules; the **68 disagreements were resolved by an adjudicator pass**.
+  applying the `planning.md` rules; the **66 disagreements were resolved by an adjudicator pass**.
   Every label is therefore a reviewed consensus or adjudicated decision. Inter-annotator
   agreement was **Cohen's κ = 0.842** (88.4% raw, n=568) — "almost perfect." All AI assistance in
   labeling is disclosed in [§10](#10-ai-usage).

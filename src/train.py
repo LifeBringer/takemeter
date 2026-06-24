@@ -10,10 +10,10 @@ Usage:
     python src/train.py --epochs 8 --lr 2e-5 --batch 16
 
 KEY HYPERPARAMETER DECISION (documented in README):
-  The Colab default is a FIXED 3 epochs. With only ~196 training examples on a
+  The Colab default is a FIXED 3 epochs. With only ~397 training examples on a
   subjective task, a fixed epoch count risks under- or over-fitting, and the right
-  number is noisy run-to-run. So we train up to --epochs (default 8) with
-  EARLY STOPPING on validation macro-F1 (patience 2) and load_best_model_at_end,
+  number is noisy run-to-run. So we train up to --epochs (default 16) with
+  EARLY STOPPING on validation macro-F1 (patience 4) and load_best_model_at_end,
   which trains until validation macro-F1 plateaus and reverts to the best
   checkpoint. We also add warmup (10%) + weight decay (0.01) for small-data
   stability. The actual best epoch chosen is recorded in outputs/train_log.json.
@@ -75,10 +75,10 @@ def compute_metrics(eval_pred):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--epochs", type=int, default=8)
-    ap.add_argument("--lr", type=float, default=2e-5)
+    ap.add_argument("--epochs", type=int, default=16)
+    ap.add_argument("--lr", type=float, default=4e-5)   # winning sweep config
     ap.add_argument("--batch", type=int, default=16)
-    ap.add_argument("--patience", type=int, default=2)
+    ap.add_argument("--patience", type=int, default=4)
     ap.add_argument("--class_weights", action="store_true",
                     help="use inverse-frequency class weights (for imbalance)")
     args = ap.parse_args()

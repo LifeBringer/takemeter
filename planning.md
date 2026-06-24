@@ -162,8 +162,7 @@ would be `hot_take`.
 ### 3.4 Difficult examples encountered during annotation
 
 Three real comments where the two independent annotators **disagreed** and the adjudicator had to
-apply a decision rule (all are in `data/all_labeled.csv`; 48 such cases are in
-`data/difficult_examples.json`):
+apply a decision rule (all 66 are in `data/all_labeled.csv` and `data/difficult_examples.json`):
 
 1. **`hot_take` vs `analysis`** — *"The biggest reason you won the series (by far) is Kawhi being
    injured. The second biggest reason is Paul George turning into Pandemic P. I don't think

@@ -22,7 +22,7 @@ Have these four posts ready to paste (all are real test-set comments with known 
 |---|---|---|---|---|
 | 1 | *"No there was more spacing league wide in prime Harden's era due to the increased focus on 3 point shooting that started with the 2014 Spurs and 2015 Warriors. Every team started playing that drive and kick to shooter offense..."* | **analysis** (0.99) | analysis | ✅ correct |
 | 2 | *"I would rather brunson take the offseason off, he already did FIBA last year"* | **hot_take** (0.99) | hot_take | ✅ correct |
-| 3 | *"NOOO not again, I can't watch this team blow another 20-point lead"* | reaction | reaction | ✅ correct |
+| 3 | *"NOOO not again, I can't watch this team blow another 20-point lead"* | **reaction** (0.50) | reaction | ✅ correct |
 | 4 | *"At this point, he's worse than a traffic cone."* | **hot_take** (0.99) | banter | ❌ wrong |
 
 ---
