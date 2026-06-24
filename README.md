@@ -31,13 +31,10 @@ A ~7:40 screen-recorded walkthrough: the Gradio app classifying live r/nba comme
 correct predictions and one instructive failure — followed by a tour of the evaluation report.
 Narration follows [`demo/demo_script.md`](demo/demo_script.md).
 
-<!-- INLINE PLAYER: drag demo/takemeter_demo.mp4 into a GitHub Issue or PR comment, wait for the
-     upload to finish, then paste the resulting https://github.com/user-attachments/assets/...
-     URL on its own line directly below this comment. GitHub renders that bare URL as a player. -->
+https://github.com/user-attachments/assets/8ebab5d6-d2e7-4a93-b561-71bd41510cd1
 
-▶️ **Watch:** [`demo/takemeter_demo.mp4`](demo/takemeter_demo.mp4) (8.3 MB, H.264/AAC) — click to
-play in GitHub's file viewer; or add the inline `user-attachments` embed above for an in-README
-player.
+> The bare `user-attachments` URL above renders as an inline player on GitHub. Backup copy is
+> committed at [`demo/takemeter_demo.mp4`](demo/takemeter_demo.mp4) (8.3 MB, H.264/AAC).
 
 ---
 
