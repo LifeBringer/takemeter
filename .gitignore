@@ -1,0 +1,25 @@
+# secrets
+.env
+*.key
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# model weights (exceed GitHub 100MB limit) + HF cache
+model/
+*.safetensors
+*.bin
+.hf_cache/
+checkpoints/
+results/
+
+# os
+.DS_Store
+
+# raw video (keep only the down-converted demo)
+demo/*.mov
+demo/raw_*.mp4

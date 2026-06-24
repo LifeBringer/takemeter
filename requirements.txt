@@ -1,0 +1,18 @@
+# TakeMeter local pipeline (Python 3.12, CPU)
+# data collection + handling
+requests>=2.31
+pandas>=2.2
+numpy>=1.26
+# fine-tuning
+torch>=2.2
+transformers>=4.44
+datasets>=2.20
+accelerate>=0.33
+scikit-learn>=1.5
+# baseline LLM
+groq>=0.11
+python-dotenv>=1.0
+# evaluation + viz
+matplotlib>=3.8
+# stretch: deployed interface
+gradio>=4.44

@@ -1,0 +1,269 @@
+{
+  "agreeCount": 16,
+  "total": 18,
+  "lowConf": 3,
+  "perPair": [
+    {
+      "pair": "banter_vs_reaction",
+      "n": 6,
+      "agreed": 5
+    },
+    {
+      "pair": "hot_take_vs_analysis",
+      "n": 6,
+      "agreed": 5
+    },
+    {
+      "pair": "reaction_vs_hot_take",
+      "n": 6,
+      "agreed": 6
+    }
+  ],
+  "rows": [
+    {
+      "id": 0,
+      "pair": "banter_vs_reaction",
+      "text": "Cool so we blew a 19 point lead in the 4th again. Genuinely thinking about taking up gardening as a hobby instead, the tomatoes won't break my heart in March 😭",
+      "a": "banter",
+      "b": "banter",
+      "agree": true,
+      "confA": 0.72,
+      "confB": 0.82,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 1,
+      "pair": "banter_vs_reaction",
+      "text": "Refs really put the whistle in their pocket and threw it in the ocean tonight huh. Anyway my blood pressure says hi from the ER",
+      "a": "banter",
+      "b": "banter",
+      "agree": true,
+      "confA": 0.68,
+      "confB": 0.78,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 2,
+      "pair": "banter_vs_reaction",
+      "text": "I have watched this team blow late leads so many times my therapist now charges me a per-Beverley rate. Wonderful loss guys, really, no notes",
+      "a": "banter",
+      "b": "banter",
+      "agree": true,
+      "confA": 0.8,
+      "confB": 0.85,
+      "cleanA": true,
+      "cleanB": true
+    },
+    {
+      "id": 3,
+      "pair": "banter_vs_reaction",
+      "text": "Our defense in the 4th quarter has the same energy as a screen door on a submarine and I am once again left questioning every decision that led me to this fanbase 🫠",
+      "a": "banter",
+      "b": "banter",
+      "agree": true,
+      "confA": 0.66,
+      "confB": 0.83,
+      "cleanA": false,
+      "cleanB": true
+    },
+    {
+      "id": 4,
+      "pair": "banter_vs_reaction",
+      "text": "Coach calling timeout to draw up an isolation for the guy shooting 2/14 was a bold choice. Inspiring really. I'm not crying you're crying",
+      "a": "banter",
+      "b": "banter",
+      "agree": true,
+      "confA": 0.7,
+      "confB": 0.78,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 5,
+      "pair": "banter_vs_reaction",
+      "text": "Down 30 in the third and I'm still watching like an idiot because hope is a disease and apparently I refuse the cure. love this franchise actually",
+      "a": "reaction",
+      "b": "banter",
+      "agree": false,
+      "confA": 0.55,
+      "confB": 0.7,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 6,
+      "pair": "hot_take_vs_analysis",
+      "text": "Jokic averaging a triple double over a full season is just not a thing humans are supposed to do, dude is the best player alive and it's not close anymore",
+      "a": "hot_take",
+      "b": "hot_take",
+      "agree": true,
+      "confA": 0.6,
+      "confB": 0.72,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 7,
+      "pair": "hot_take_vs_analysis",
+      "text": "People sleeping on SGA but he led the league in scoring AND won a chip in the same year, name me another guard who did that and tell me he's not top 3 right now",
+      "a": "analysis",
+      "b": "hot_take",
+      "agree": false,
+      "confA": 0.62,
+      "confB": 0.7,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 8,
+      "pair": "hot_take_vs_analysis",
+      "text": "Wemby is gonna lead the league in blocks for the next decade easy, he already had 3.6 a game as a rookie that's literally video game numbers",
+      "a": "hot_take",
+      "b": "hot_take",
+      "agree": true,
+      "confA": 0.62,
+      "confB": 0.68,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 9,
+      "pair": "hot_take_vs_analysis",
+      "text": "The Celtics shooting 16 threes a game in the playoffs is exactly why they win, live by the 3 die by the 3 is dead, math always wins eventually",
+      "a": "hot_take",
+      "b": "hot_take",
+      "agree": true,
+      "confA": 0.68,
+      "confB": 0.72,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 10,
+      "pair": "hot_take_vs_analysis",
+      "text": "Luka is the best offensive player I've ever seen, 33-9-9 in a playoff run is Jordan-MJ-Bird territory whether yall wanna admit it or not",
+      "a": "hot_take",
+      "b": "hot_take",
+      "agree": true,
+      "confA": 0.6,
+      "confB": 0.7,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 11,
+      "pair": "hot_take_vs_analysis",
+      "text": "Draymond is washed, his TS% has been under 50 for like 3 straight years now, hes only out there for the screaming and the flagrants at this point",
+      "a": "analysis",
+      "b": "analysis",
+      "agree": true,
+      "confA": 0.58,
+      "confB": 0.6,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 12,
+      "pair": "reaction_vs_hot_take",
+      "text": "NObody is beating us in a 7 game series with this man playing like THIS omg 😭😭",
+      "a": "reaction",
+      "b": "reaction",
+      "agree": true,
+      "confA": 0.82,
+      "confB": 0.85,
+      "cleanA": true,
+      "cleanB": true
+    },
+    {
+      "id": 13,
+      "pair": "reaction_vs_hot_take",
+      "text": "ok that dunk just ended the MVP race lmao give him the trophy rn",
+      "a": "reaction",
+      "b": "reaction",
+      "agree": true,
+      "confA": 0.7,
+      "confB": 0.72,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 14,
+      "pair": "reaction_vs_hot_take",
+      "text": "WE ARE NOT LOSING THIS SERIES. not after that. write it down",
+      "a": "reaction",
+      "b": "reaction",
+      "agree": true,
+      "confA": 0.85,
+      "confB": 0.85,
+      "cleanA": true,
+      "cleanB": true
+    },
+    {
+      "id": 15,
+      "pair": "reaction_vs_hot_take",
+      "text": "bro just hit that game winner he's the best closer in the league right now idc what anyone says",
+      "a": "reaction",
+      "b": "reaction",
+      "agree": true,
+      "confA": 0.62,
+      "confB": 0.65,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 16,
+      "pair": "reaction_vs_hot_take",
+      "text": "yooo if he keeps shooting like this they're making the Finals easy",
+      "a": "reaction",
+      "b": "reaction",
+      "agree": true,
+      "confA": 0.58,
+      "confB": 0.68,
+      "cleanA": false,
+      "cleanB": false
+    },
+    {
+      "id": 17,
+      "pair": "reaction_vs_hot_take",
+      "text": "that was the moment a dynasty started fr, remember where you were",
+      "a": "reaction",
+      "b": "reaction",
+      "agree": true,
+      "confA": 0.72,
+      "confB": 0.8,
+      "cleanA": false,
+      "cleanB": true
+    }
+  ],
+  "diagnosis": {
+    "weakest_boundary": "banter_vs_reaction",
+    "problems": [
+      "Every banter_vs_reaction item (ids 0-5) is an engineered HYBRID that fuses a clear comedic device with genuine emotional venting in the same comment (e.g., id 3 'screen door on a submarine' metaphor + 'questioning every decision that led me to this fanbase'; id 4 sarcastic 'Inspiring really' + 'I'm not crying you're crying'). The rule asks whether 'humor incidental' but in these cases humor and venting are co-equal, so the test gives no answer.",
+      "The current tie-break ('distinct punchline => banter; raw emotional venting => reaction') fails because these comments contain BOTH a punchline AND raw venting. The rule does not say what to do when both are present, which is exactly the engineered stress case.",
+      "This produced the lowest-confidence call in the entire dataset (id 5, confA=0.55) and the only banter/reaction disagreement (id 5: A=reaction, B=banter). Id 5 has heavy comedic framing ('hope is a disease and apparently I refuse the cure', ironic 'love this franchise actually') yet annotator A read the dominant intent as venting despair, showing the irony-vs-venting line is unresolved.",
+      "5 of 6 items carry an unclean flag on at least one annotator (0,1,3,4,5) and confidences cluster low (.55-.72 on side A), indicating systematic, not incidental, ambiguity at this boundary.",
+      "The emoji/tone signals (😭, 🫠) point toward emotional venting while the text structure points toward joke-telling, and the rule gives no guidance on weighting paralinguistic distress signals against comedic structure.",
+      "Inconsistency in which features drive the label: id 2 ('therapist charges me a per-Beverley rate', 'no notes') is rated clean banter by both, but id 0,1,4 with equally strong joke structures are rated unclean - annotators have no stated criterion for why a constructed joke sometimes does and sometimes does not override accompanying venting."
+    ],
+    "recommended_tweaks": [
+      "Replace the weak 'humor incidental' language with a CONSTRUCTION test: 'If the comment contains a deliberately constructed comedic device (metaphor/simile-for-laughs, setup-payoff, meme/reference, sustained sarcasm), label banter EVEN IF genuine frustration is also expressed. Venting plus a crafted joke = banter, because effort spent crafting the joke is the dominant communicative choice. Reaction is reserved for venting with NO constructed joke (raw exclamation, profanity, all-caps despair, bare 'we are so done').'",
+      "Add an explicit hybrid rule: 'Many comments mix a joke and genuine emotion. Do NOT use the 50/50 feeling to lower confidence. Apply the construction test: presence of any one clear comedic device (named in the banter definition) is sufficient to assign banter. Absence of any comedic device => reaction.'",
+      "Demote emoji/paralinguistic signals: 'Distress emojis (😭🫠) and tone do NOT by themselves indicate reaction when the surrounding text is a constructed joke; treat them as part of comedic delivery (bathos) in that case. Emoji alone, on otherwise bare venting, supports reaction.'",
+      "Resolve id 5 explicitly with a worked example in the guideline: 'Down 30... hope is a disease... love this franchise actually' = banter, because 'hope is a disease and I refuse the cure' is a constructed ironic aphorism and 'love this franchise actually' is sarcastic reversal - both are comedic devices, so dominant intent is humor despite real despair underneath.",
+      "Add a self-deprecation/absurdist-hyperbole clause: 'Self-deprecating absurd hypotheticals (taking up gardening, therapist per-Beverley rate, blood pressure from the ER) are comedic exaggeration-for-laughs => banter, not literal emotional reporting.'",
+      "Define a confidence-floor instruction so hybrids stop being marked unclean: 'A comment is NOT ambiguous merely because it expresses real emotion alongside a joke. Only mark clean=false if NO comedic device is identifiable yet the tone is also too flat for genuine venting.'"
+    ],
+    "overall_verdict": "The single weakest boundary is banter_vs_reaction. It carries the dataset's lowest-confidence call (0.55, id 5), its only disagreement among these six items, and an unclean flag on 5 of 6 comments - all driven by engineered HYBRIDS that combine a crafted joke with genuine venting. The root cause is that the rule's 'humor incidental' / 'punchline vs venting' tie-break gives no answer when both are present at once. The fix is to switch from a fuzzy dominance judgment to a concrete CONSTRUCTION test (any deliberately crafted comedic device => banter even when real frustration co-occurs; bare venting with no device => reaction), demote emojis/tone as standalone reaction signals, and add worked examples plus a confidence-floor rule so co-occurring emotion stops being treated as ambiguity. hot_take_vs_analysis is the runner-up (all six unclean, one disagreement at id 7) but stems from a single under-specified 'decorative/cherry-picked stat' test and is more localized."
+  },
+  "_meta": {
+    "description": "Stress-test the 4-class r/nba taxonomy: generate boundary comments, double-annotate, diagnose weakest boundary",
+    "logs": [
+      "generated 18 boundary comments",
+      "annotator agreement 16/18; low-confidence cases 3"
+    ],
+    "method": "3 LLM generators x6 boundary comments -> 2 independent LLM annotators -> diagnosis",
+    "note": "Generated comments are synthetic stress-test cases, NOT training data. Training data is real r/nba comments (see data/)."
+  }
+}
