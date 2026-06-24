@@ -1,0 +1,555 @@
+{
+  "prompt_system": "You are an expert annotator of r/nba discourse. Classify the user's comment into EXACTLY ONE of these four labels.\n\nClassify each r/nba comment by its DOMINANT communicative intent into EXACTLY ONE of four labels:\n\nANALYSIS — a structured argument backed by SPECIFIC, VERIFIABLE evidence (stats, tactics/scheme, historical comparison, rules/CBA) where REASONING is the point. Requires a stated mechanism/\"why\" linking evidence to a claim — not just a stat sitting next to a verdict. A real stat used only to prop up a subjective ranking/superlative (\"led the league in scoring so he's top-3\") is HOT_TAKE, not analysis.\n\nHOT_TAKE — a bold, confident opinion / ranking / prediction asserted with little or no support; any stat is decorative or cherry-picked, not a genuine argument. Asserts rather than argues.\n\nREACTION — an immediate EMOTIONAL response to a specific event/moment (a play, result, trade, injury): a feeling in the moment, little/no argument, and NO constructed joke.\n\nBANTER — primary purpose is HUMOR: a joke, pun, meme, sarcastic one-liner, or playful trash-talk.\n\nBOUNDARY DECISION RULES:\n1) banter vs reaction (CONSTRUCTION TEST): if the comment contains ANY deliberately constructed comedic device — metaphor/simile-for-laughs, setup-and-payoff, meme/reference, sustained sarcasm, self-deprecating absurd hypothetical — label BANTER, even if genuine frustration is also present. Reserve REACTION for venting with NO comedic device (raw exclamation, profanity, all-caps despair). Distress emojis alone do NOT make it reaction when the text is a constructed joke.\n2) hot_take vs analysis: label ANALYSIS only if removing the opinion framing leaves specific verifiable evidence supporting the claim THROUGH a stated mechanism. A vague/cherry-picked/decorative stat, or a real stat backing only a subjective ranking => HOT_TAKE.\n3) reaction vs hot_take: an emotional exclamation tied to the just-happened event => REACTION; a standalone confident prediction/ranking stated as a claim, not bound to a moment => HOT_TAKE.\n\nRespond with ONLY the single label word — one of: analysis, hot_take, reaction, banter. No punctuation, no explanation.",
+  "metrics": {
+    "model": "llama-3.3-70b-versatile",
+    "accuracy": 0.6744186046511628,
+    "macro_f1": 0.6639705882352941,
+    "weighted_f1": 0.6979670162638699,
+    "per_class": {
+      "analysis": {
+        "precision": 1.0,
+        "recall": 0.7391304347826086,
+        "f1": 0.85,
+        "support": 23.0
+      },
+      "hot_take": {
+        "precision": 0.72,
+        "recall": 0.6923076923076923,
+        "f1": 0.7058823529411765,
+        "support": 26.0
+      },
+      "reaction": {
+        "precision": 0.30434782608695654,
+        "recall": 0.5384615384615384,
+        "f1": 0.3888888888888889,
+        "support": 13.0
+      },
+      "banter": {
+        "precision": 0.7619047619047619,
+        "recall": 0.6666666666666666,
+        "f1": 0.7111111111111111,
+        "support": 24.0
+      }
+    },
+    "unparseable": 2,
+    "n_test": 86
+  },
+  "predictions": [
+    {
+      "text": "Love the display of all the high school jerseys in California. The courts outside are great too.",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "It's not necessarily an excuse. It's just that colpared to the regular season some players look like sharp and less fresh, like Luka and Murray. So it's only natural that people are going to assume the injuries play a role in that.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "The hook shot is a relatively inefficient shot for most centers. I think the main reason Sengun uses it more than Sabonis or Jokic is because he isn’t strong enough to use bully ball to get easy layups.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "do you watch nets games?",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "No there was more spacing league wide in prime Harden's era due to the increased focus on 3 point shooting that started with the 2014 Spurs and 2015 Warriors. Every team started playing that drive and kick to shooter offense. During Kobe's era that wasn't really a thing, everyone was trying to score inside a lot more.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "It's an incredibly reactionary list.",
+      "true": "hot_take",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "\"We've reached out to the New Jersey Devils zamboni driver to see if he can zamboni over the puke. He said he can be here in an hour.\"",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "If it keeps him healthy then by all means lmao",
+      "true": "reaction",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "nothing more demoralizing than watching 80 year old Popovich sink a FT to put you down 10 with two minutes to go",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "> faked mental health issues The media has been roasting him for years now when it's been apparent he had a back injury. He was afraid of minor contact in the paint. His mental health issues are real.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Well, when they can barely get 8 points, they gotta pick up the slack else where",
+      "true": "hot_take",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "Lmao edited. Sorry, I just watch a lot of ball with ideas in my head but no where to really talk it out with anyone in good faith, so it comes out pretty long",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Not similar to Kuminga at all tbh",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "They did! I was just fucking around. I had some bananas and white chocolate chips, so I figured I would throw something together. Could have used some sort of nuts(maybe pecans) to balance them out a bit, but they satisfied the sweet tooth for sure. I’m generally making dinner or baking something after work to wind down and relax, so I’m often watching games on my phone in the kitchen during the playoffs. Lol",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "ur just going to get a lot of 4's",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "BANTER"
+    },
+    {
+      "text": "in their defense, we kinda did lol. All for THT (smh)",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "I was 50/50 on if this was a flagrant or not but I just cannot comprehend how this isn't a \"windup\", do you need to do a windmill with your arms for it to be a windup?",
+      "true": "analysis",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "I would rather brunson take the offseason off, he already did FIBA last year",
+      "true": "hot_take",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "2023 Finals Game 1 - June 1 Game 2 - June 4 Game 3 - June 7 Game 4 - June 9 Game 5 - June 12",
+      "true": "analysis",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "Weird Jefferson said it was just a hard playoff foul when it happened to us earlier in the game.",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "This is why Steph is my 2nd favorite player in the NBA behind Giannis. Just GOAT shit",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "PG tried to diss Intuit Dome saying theres no fans but it's making him look like he doesn't know shit",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "I see, thanks for taking your time to explain it!",
+      "true": "reaction",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Insane athlete. I always wondered how good he could be if his BBIQ improved and we're finally seeing it this season",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "HOT_TAKE"
+    },
+    {
+      "text": "I think that was a sarcastic comment. Being blown out like that in game 2, with the whole world declaring wolves arrival in a historical stage, and coming back to win the next 3 is quite great coaching. Too bad they didn't have enough in the end. And Malone is probably honest saying the team just wore down.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "taking him over beal isn't a hot take anymore",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Such a good teammate man. This team has the championship DNA",
+      "true": "reaction",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Nah he had some legitimate good minutes vs the magic even though it ended in a loss. Far worse players than him.",
+      "true": "hot_take",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "Nahh. Shai and Luka are a tier or two above those guys. Luka has already proven himself in the playoffs for years. He is clearly hobbled this year and nowhere near his best form, physically.",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Their website is atrocious. Also the content of the page completely tilts towards stats and dramatic storylines. The playoff picture is buried somewhere random in favor of who got a triple double last night. IDC, I want to see the stuff that matters.",
+      "true": "hot_take",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "It’s just unnecessary and frankly disrespectful. This isn’t the time and place to say people are not good enough for X but could be good for Y as a lower tier blah blah blah. It’s a fun contest and the man is getting 1 minute of tv time. The hating was over the top.",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "His father, Tim, is one of the most successful coaches in WPIAL (Western Pennsylvania Interscholastic Athletic League) history. After many successful runs with the Chartiers Valley High School Boys and Girls basketball teams, he became the head coach of the Bishop Canevin High School Boys basketball team",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Gotta share that video because this looks like a double dribble no matter how many times I slow it down to try to see how it’s not. Unless I’m missing something, he gets the rebounds, dribbles once, grabs the ball with 2 hands like he was going to pass but then dribbled again.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Dumbass acting like the roster isnt his fault...",
+      "true": "hot_take",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "If anything this is basically the next version of the Giannis/Middleton/Jrue/Brook model (ie, competency... slow build the core to a super high level and strike while the iron is hot to make the jump), not a superteam. Come to think of it, that's the Raptors too. And probably just the normal way to build a team.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Why is everyone so rude?",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "Legit, whether anyone wants to call it valid or not, his confidence has been fucked since that Hawks series/Doc presser. I legitimately think there is a very real possibility that going to an environment like OKC, where everyone seems to vibe well and support each other, it might get him back to at least his self before the infamous pass.",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "He should go back to Cleveland and team up with Mitchell. Feel like Cavaliers needed a small forward more than anything. And OKC should take the chance to grab Anthony Davis with all the FRPs they have. Championship window is short.",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Hey there GG! KMidd here, just wanted to say I wana start building a relationship with you! To start, please send me the 16 digits on the back of your credit card, alongside the 3 digit VIN AND the expiration date. See you on the courts pal!",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "BANTER"
+    },
+    {
+      "text": "He’s been talking about shooting left handed since before the all star break, I think he might.",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Oh boy the rest of my cousins (big Kobe fans), have lost a lot of the energy when LeBron came. Uber critical of his game + the team, bringing up comparisons to all the Kobe teams",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "Also an Olympic gold. He's had a great career.",
+      "true": "analysis",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "This, the dude did a 180 on his commitment to Italy. To be fair though, Kobe Bryant never played for Italy",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "It was very funny when he said he and Jokic were the best duo in the NBA. Jokic doing a LOT of hard-carrying in that statement.",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Awesome! I’ll add that to future rants lol. When I was in high school in Indianapolis our little city alone had Mike Conley, Greg Oden, George Hill, Jeff Teague, Eric Gordon, Courtney Lee and Josh McRoberts playing high school ball *at the same time.*",
+      "true": "banter",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "It was for OKC to take Al Horford, lmao",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "old man just wants to go to bed and they have him spectate jimmy embarassing himself",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Bro averaged 4ppg in college, he lucky to even be drafted when he already looked out of his depth against college level players",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Jefferson was horrible on the mic all night. Don’t know whose idea it was to get him on there.",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "You just reminded me Bonny can’t even legally drink until next season 😂",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "At this point, he's worse than a traffic cone.",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Thunder's top 5 guys are shooting 50% except for Giddey who is in a 40% shooting slump. Chet taking more but less efficient shots doesn't help when he's taking away shots from Shai, Jalen, and Lu who are all shooting just as well. Such a great mentality from a young guy.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "You won't care now. But people might care ten, twenty years down the line when it starts being counted as an \"accolade\".",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "The fact that it’s upvoted is fucking hilarious.",
+      "true": "reaction",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "I mean LeBron is the fanbase lol. He's bigger than any individual team's fanbase, there's a LeDiaspora. Aside from that me and many other will see the 2016 NBA finals as the most legendary and revered finals in NBA history. I can't imagine any other matchup in sports that had so much legacy riding on the outcome. It was practically a fairytale.",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Abso-fucking-lutely not. Challenges have already saved us from so many unfair results. I agree with trying to speed it up - the solution is automatic AI review. Remove the humans from the loop - it's the humans that make the game slow.",
+      "true": "hot_take",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Sabonis had a perfect play. Bumped him hard under the basket, got him with the fake, and Wemby was still able to block the shot. Crazy.",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "He interferes with every free agent signing. He brought in Westbrook lol His best friend Rich Paul got THT a fat contract too",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "He’s right to say it.",
+      "true": "hot_take",
+      "pred": "reaction",
+      "raw": "REACTION"
+    },
+    {
+      "text": "Lakers fan 12/25, both Nuggets and Warriors losing trap games lmao.",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "Technically there were only 2 number 1 picks. KAT and Ant. I can't really consider it \"Luck\" on the wiggins thing, they didn't draft Wiggins. That was from the Kevin Love trade. But regardless, any team that has a championship had \"luck\" play into it. It's kind of impossible to win it all without at least a little luck.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Heading into the 4th a reporter caught Hali for a quick court side: R - “Down 5, how do you close this one out?” H - “We just gotta rebound the ball and keep running.” Or something like that. They’re gassing guys and they know it. Hard to see apart from fg% dropping and error rate increasing just a little. Margins are so thin at this level, that’s all it takes to take over sometimes.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "his body control is crazy. my guy can bend his upper and lower body x10 while in the air.",
+      "true": "reaction",
+      "pred": "hot_take",
+      "raw": "HOT_TAKE"
+    },
+    {
+      "text": "The biggest reason you won the series (by far) is Kawhi being injured. The second biggest reason is Paul George turning into Pandemic P. I don't think Westbrook is in the top 5 when it comes to \"reasons you won the series\".",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Press conference reporters are there to ask questions in order to get quotes from players and coaches about the game. If they just got eliminated and no one asked how hard it is or what it’s like to lose that game, they’re absolutely not doing their job. No excuse for Malone to be this disrespectful like that.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "His defensive box plus minus is gassed by his rebounds n assist",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Maybe, I can't wait to be old and grumpy and call everyone that cares about it \"nephews\". Back in my day, we didn't have the in-seasom tournament or \"clutch player of the year\", you either won the Finals or you were a loser!",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "didn't think anyone could be from Rushville. never ever heard anyone from outside that area mention Rushville, Indiana. that is wild. hell yeah, man. I know you got some crazy relatives if they come from Rushville.",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Looked it up, apparently OKC later flipped Horford for Kemba and the pick that became Alperen Sengün. What I don't get is how Houston ended up with Sengün without OKC getting anything out of it.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Just like LeBron’s right now. No reason a 40 year old should get nearly 50 mil on a team that has serious title aspirations",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "It's really hard hating Pop even though he was the demise of my childhood",
+      "true": "reaction",
+      "pred": "reaction",
+      "raw": "reaction"
+    },
+    {
+      "text": "Not exactly. The reality is somewhere in the middle. Another commenter pointed out that this stat holds up around 80% of the time going back 5 decades. Even 60% still indicates a massive advantage in drafting a franchise star. However with the normalization of franchise players and superstars jumping ship 2-5 times throughout their careers, it looks like free agency is going to play a much bigger role in titles moving forward.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "He was on 40 million last year and scored 0 in a home elimination game that we lost by 3. The previous season he scored 2 points in the game 6 series clincher against Boston on 1/7 shooting in 40 minutes. I don't care what Pistons fans think of Tobias. He could spontaenously turn into prime Carmelo Anthony he fucking sucked in Philly.",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "And he had downfalls that came with being a one man offense Competitive teams like the Celtics who have elite scorers would not want touches shifting towards Russ which is what would happen Even in okc when he was peaking, he would take too many shots away from kd",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "He never had the media behind him like a player of his caliber usually does. Partly bc he never had an agent in Houston that would leverage their power and a lot of people were frustrated by his playstyle. Market has something to do with it too, Houston is a huge city but the fanbase is relatively small compared to LA/NY/Chi",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Got a big poker game coming up",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "BANTER"
+    },
+    {
+      "text": "Hell yeah! Best parts? never fitting on an airplane / in a sports car / always being in the way at sporting events and concerts / walking into every spider web over 6ft in the woods and lastly everyone assuming I played bball",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Not really an Elton Brand fan (he's not very good) but he was never a tank commander. In terms of regular season win %, this season (53.7% win rate) was his worst season. As a player? Absolutely, though he didn't really play a lot of games with the Sixers.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "SGA is sitting at -850 odds to win it, the reality is I don't think it's as close as people are making it out to be",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "letting go of him was a mistake, especially for that shitty return of Dfs and shake milton 🤣 He was the only playmaker besides bron and now we have no offense",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "Philly is 3x the size of Atlanta and also has a Black plurality. Atlanta has more Black history and cultural significance though",
+      "true": "analysis",
+      "pred": "hot_take",
+      "raw": "HOT_TAKE"
+    },
+    {
+      "text": "In the tweet link, it's the opposite for Embiid and Giannis. Would really like to access the data to validate though.",
+      "true": "analysis",
+      "pred": "analysis",
+      "raw": "analysis"
+    },
+    {
+      "text": "Yo I absolutely love this guy. He’s my fav rookie for sure",
+      "true": "reaction",
+      "pred": "hot_take",
+      "raw": "hot_take"
+    },
+    {
+      "text": "I can't wait for the tell-all book on this. Or the netflix/ESPN 30/30",
+      "true": "banter",
+      "pred": "banter",
+      "raw": "banter"
+    },
+    {
+      "text": "Foul baiting while down multiple possessions late isn't effective?!",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01j6dxj7wte1w8mn1dg555xav9` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99844, Requested 543. Please try again in 5m34.368s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    },
+    {
+      "text": "Chet “Odee” holmgren would like word bro",
+      "true": "banter",
+      "pred": "reaction",
+      "raw": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01j6dxj7wte1w8mn1dg555xav9` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99819, Requested 544. Please try again in 5m13.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "labels": [
+    "analysis",
+    "hot_take",
+    "reaction",
+    "banter"
+  ],
+  "label2id": {
+    "analysis": 0,
+    "hot_take": 1,
+    "reaction": 2,
+    "banter": 3
+  },
+  "id2label": {
+    "0": "analysis",
+    "1": "hot_take",
+    "2": "reaction",
+    "3": "banter"
+  }
+}

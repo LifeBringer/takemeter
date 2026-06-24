@@ -160,13 +160,37 @@ specific moment → `hot_take`. The example is an emotional eruption tied to the
 would be `hot_take`.
 
 ### 3.4 Difficult examples encountered during annotation
-*(Filled during Milestone 3. At least three real comments that genuinely gave pause, with the
-label decided and the rule applied — see README §"Difficult-to-label examples" for the final
-write-up.)*
 
-- _TBD after annotation — example 1_
-- _TBD after annotation — example 2_
-- _TBD after annotation — example 3_
+Three real comments where the two independent annotators **disagreed** and the adjudicator had to
+apply a decision rule (all are in `data/all_labeled.csv`; 48 such cases are in
+`data/difficult_examples.json`):
+
+1. **`hot_take` vs `analysis`** — *"The biggest reason you won the series (by far) is Kawhi being
+   injured. The second biggest reason is Paul George turning into Pandemic P. I don't think
+   Westbrook is in the top 5 when it comes to 'reasons you won the series.'"*
+   → **`hot_take`.** It *looks* analytical — it ranks "reasons" — but it cites no verifiable
+   evidence and states no mechanism; it asserts a confident subjective ranking. This is exactly
+   the case the §3.2 **mechanism rule** was sharpened for: structure that mimics analysis without
+   doing the argumentative work.
+
+2. **`reaction` vs `hot_take`** — *"It's just unnecessary and frankly disrespectful. This isn't
+   the time and place to say people are not good enough… It's a fun contest and the man is getting
+   1 minute of TV…"*
+   → **`reaction`.** An emotional "this is disrespectful / over the top" response **bound to the
+   just-happened commentary**, with no standalone ranking or prediction (Rule 3). The heat reads
+   as a feeling in the moment, not an asserted claim.
+
+3. **`analysis` vs `reaction`** (anecdote ≠ evidence) — *"He got a pass and had no idea what to do
+   with the ball, and a few plays later he completely missed a pass to him. He should have been
+   carrying the team but he was a liability by the 2nd half."*
+   → **`reaction`.** Play-by-play recollection *feels* like evidence, but anecdotal "I saw him do
+   X" tied to specific moments is not verifiable stats/scheme with a stated mechanism, so it fails
+   the `analysis` test and lands as event-bound venting (Rule 2/3).
+
+**Inter-annotator reliability (stretch, computed here):** across all 568 double-labeled comments,
+the two independent annotators reached **Cohen's κ = 0.842** (88.4% raw agreement) — "almost
+perfect" agreement, which both validates the taxonomy and means these adjudicated cases are the
+genuine ~12% tail of boundary difficulty (they appear in the final dataset at their natural rate).
 
 ### 3.5 Label stress-test (AI Tool Plan item #1, executed before annotation)
 
@@ -184,7 +208,7 @@ concentrated exactly where expected:
 | `hot_take` ↔ `analysis` | 5/6 | one miss → added the **mechanism requirement** (§2, §3.2) |
 | `banter` ↔ `reaction` | 5/6 | weakest → replaced "humor incidental" with the **construction test** (§3.1) |
 
-**Definition changes this drove** (made *before* committing to 280 annotations, which is the
+**Definition changes this drove** (made *before* committing to the full annotation, which is the
 whole point of stress-testing):
 1. `analysis` now requires a **stated mechanism**, not just a stat next to a verdict (§2, §3.2).
 2. `banter` ↔ `reaction` now uses the **construction test** + **emoji-demotion** + an explicit
@@ -205,17 +229,22 @@ prompt in Milestone 4.
   threads surface more `analysis`). Filter out: `[deleted]`/`[removed]`, AutoModerator/bot
   comments, comments shorter than ~4 words or longer than ~90 words, link-only/quote-only
   comments, and non-English.
-- **Target & balance.** Label toward **~280 examples, ~70 per class (~25% each)**. Hard rule:
-  **no class exceeds 70%**; design target **≥ 20% per class**. Raw r/nba skews toward short
-  `reaction`/`banter`, so I'll actively mine for `analysis` (longer, evidence-bearing comments)
-  and clean `banter` to reach balance.
+- **Target & balance.** Label a large pool, then keep **all consensus-labeled comments** for
+  maximum training signal. Final dataset = **568 examples**: `hot_take` 174 (31%), `banter` 155
+  (27%), `analysis` 149 (26%), `reaction` 90 (16%). `reaction` is the limiting class. Hard rule:
+  **no class exceeds 70%** (max is 31% ✓); the ≥20%-per-class *aim* is met for three classes,
+  with `reaction` at 16% — a deliberate trade of perfect balance for ~58% more training data,
+  decided after a first experiment showed the small DistilBERT was data-starved on a balanced
+  360-example set. Hard/adjudicated cases are kept at their natural ~12% rate, not filtered out.
 - **Underrepresentation handling.** After the first labeling pass, count per class. If any class
   is under ~20%, mine additional candidates *specifically for that class* (e.g., keyword/length
   filters, analysis-heavy threads) before proceeding to training — never pad with low-quality
   or mislabeled examples just to hit a number.
-- **Why ~280 and not 200.** The notebook splits 70/15/15, so 200 → a 30-example test set
-  (~7–8 per class), which is very noisy for per-class metrics. ~280 → a ~42-example test set
-  (~10–11 per class), giving more trustworthy per-class F1.
+- **Why 568 and not the 200 minimum.** The split is 70/15/15, so 200 → a 30-example test set
+  (~7–8 per class), very noisy for per-class metrics, and starves a small fine-tuned model of
+  training signal. 568 → an 86-example test set and 397 training examples — more trustworthy
+  per-class F1 and a fairer shot for DistilBERT against a strong 70B baseline. (Empirically,
+  expanding from 360→568 lifted test macro-F1 from 0.54→0.58 — see README.)
 - **File.** One labeled CSV, `data/takemeter_nba.csv`, columns: `text`, `label`, `notes`
   (difficult-case reasoning), `pre_labeled` (provenance flag), `source_id` (Reddit comment id
   for traceability). The notebook splits 70/15/15 automatically; the local pipeline mirrors the
@@ -275,7 +304,7 @@ There's no application code to generate here, so AI tools help at three specific
    cases and ask it to generate boundary comments designed to *break* the taxonomy (banter vs
    reaction, hot_take vs analysis). Have an independent pass try to classify each under the
    rules; any comment that can't be classified cleanly signals a definition to tighten — done
-   *before* committing to 280 annotations. *(Run as a small multi-agent stress-test; results and
+   *before* committing to the full annotation. *(Run as a small multi-agent stress-test; results and
    any definition tweaks recorded in §3 / a stress-test note.)*
 2. **Annotation assistance.** Use an LLM to **pre-label** batches, then review and correct every
    pre-assigned label against the §2/§3 rules, with a separate adversarial-verification pass on
@@ -316,6 +345,6 @@ All four, because each reinforces the core rubric rather than competing with it:
 
 **Tooling.** Local `uv` venv (Python 3.12), CPU PyTorch + `transformers` + `datasets` +
 `scikit-learn` + `groq` + `gradio`. `distilbert-base-uncased` fine-tuned locally on CPU
-(~280 examples × 3 epochs ≈ minutes). The CodePath Colab notebook is the parallel "official"
+(~400 training examples × early-stopped epochs ≈ a few minutes on CPU/MPS). The CodePath Colab notebook is the parallel "official"
 path and demo backup. Model weights (~270 MB) exceed GitHub's 100 MB limit, so they're
 gitignored with reproduction instructions; small outputs (JSON, PNG) are committed.

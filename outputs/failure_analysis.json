@@ -1,0 +1,333 @@
+{
+  "candidates_count": 21,
+  "candidates": [
+    {
+      "name": "Analysis collapses into hot_take",
+      "description": "The single largest error mass: 11 of 12 misclassified analysis items are predicted hot_take (analysis recall only 0.48, vs precision 0.85). Substantive, hedged, evidence-citing analysis posts get read as opinionated hot takes. The model cannot distinguish measured reasoning/explanation from spicy opinion, and almost always resolves the ambiguity toward hot_take, often at very high confidence (0.97+).",
+      "direction": "analysis->hot_take",
+      "evidence_quotes": [
+        "In the tweet link, it's the opposite for Embiid and Giannis. Would really like to access the data to validate though.",
+        "His defensive box plus minus is gassed by his rebounds n assist",
+        "Philly is 3x the size of Atlanta and also has a Black plurality. Atlanta has more Black history and cultural significance though",
+        "Not really an Elton Brand fan (he's not very good) but he was never a tank commander. In terms of regular season win %, this season (53.7% win rate) was his worst season."
+      ],
+      "strength": 0.95
+    },
+    {
+      "name": "hot_take is an over-predicted attractor",
+      "description": "hot_take is the dominant false-positive sink: 19 wrong predictions land on hot_take (11 from analysis, 3 from reaction, 5 from banter), driving its low precision (0.49) despite high recall (0.69). Whenever the model is unsure across analysis, reaction, and banter, it defaults toward hot_take. This is a class-bias attractor effect, not confusion with a single neighbor.",
+      "direction": "*->hot_take",
+      "evidence_quotes": [
+        "If it keeps him healthy then by all means lmao",
+        "his body control is crazy. my guy can bend his upper and lower body x10 while in the air.",
+        "It was for OKC to take Al Horford, lmao",
+        "Lakers fan 12/25, both Nuggets and Warriors losing trap games lmao."
+      ],
+      "strength": 0.85
+    },
+    {
+      "name": "Banter scatters into reaction and hot_take",
+      "description": "Banter has the weakest containment: of 11 misclassified banter items, 6 go to reaction and 5 to hot_take. Jokey, casual, conversational posts (sarcasm, riffs, off-topic chatter) get split between emotional reaction and opinionated hot_take. The reaction direction in particular (banter->reaction) reflects casual enthusiasm/short comments being read as emotional reactions.",
+      "direction": "banter->reaction",
+      "evidence_quotes": [
+        "It was very funny when he said he and Jokic were the best duo in the NBA. Jokic doing a LOT of hard-carrying in that statement.",
+        "Weird Jefferson said it was just a hard playoff foul when it happened to us earlier in the game.",
+        "Hey there GG! KMidd here, just wanted to say I wana start building a relationship with you! To start, please send me the 16 digits on the back of your credit card",
+        "didn't think anyone could be from Rushville. never ever heard anyone from outside that area mention Rushville, Indiana."
+      ],
+      "strength": 0.78
+    },
+    {
+      "name": "hot_take bleeds into banter (reciprocal confusion)",
+      "description": "The hot_take<->banter boundary is confused in both directions: 4 hot_take items are predicted banter and 5 banter items predicted hot_take, making this the largest bidirectional pair. Opinionated jabs and praise that carry a joking or insulting tone straddle the line between a strong take and casual banter.",
+      "direction": "hot_take->banter",
+      "evidence_quotes": [
+        "Dumbass acting like the roster isnt his fault...",
+        "This is why Steph is my 2nd favorite player in the NBA behind Giannis. Just GOAT shit",
+        "PG tried to diss Intuit Dome saying theres no fans but it's making him look like he doesn't know shit",
+        "He’s right to say it."
+      ],
+      "strength": 0.62
+    },
+    {
+      "name": "Reaction confused with hot_take",
+      "description": "Reaction's main leak is toward hot_take (3 of 5 reaction errors). Short, emotional, enthusiastic comments about a player or play are read as opinionated takes. This compounds the broader hot_take attractor bias and the analysis->hot_take pattern, showing hot_take absorbs ambiguity from every other class.",
+      "direction": "reaction->hot_take",
+      "evidence_quotes": [
+        "If it keeps him healthy then by all means lmao",
+        "his body control is crazy. my guy can bend his upper and lower body x10 while in the air.",
+        "Oh boy the rest of my cousins (big Kobe fans), have lost a lot of the energy when LeBron came. Uber critical of his game + the team"
+      ],
+      "strength": 0.55
+    },
+    {
+      "name": "Confident failure on short / low-context comments",
+      "description": "Comments of roughly 60 characters or fewer fail at a strikingly high rate AND with high confidence. Of 8 wrong predictions at or below 60 chars, 7 carry confidence >= 0.90 (mean confidence on short errors 0.93 vs 0.86 across all errors). With almost no tokens to read meaning from, the model latches onto whatever surface cue is present and commits hard. Short figurative or terse lines get a confident but wrong label rather than a hedged one, indicating the classifier has no semantic foothold in low-context text and defaults to a high-prior class.",
+      "direction": "various->hot_take/banter (short text, mean conf 0.93)",
+      "evidence_quotes": [
+        "At this point, he's worse than a traffic cone.",
+        "Also an Olympic gold. He's had a great career.",
+        "He’s right to say it.",
+        "It's an incredibly reactionary list."
+      ],
+      "strength": 0.7
+    },
+    {
+      "name": "hot_take sink for any evaluative claim (analysis collapses into hot_take)",
+      "description": "hot_take acts as a default basin: 19 of 36 errors are predicted hot_take, and the single largest direction is analysis->hot_take with 11 cases. Critically this is NOT explained by length or stat-words: the misread analyses span 46 to 326 chars (mean 201c), longer on average than correct cases, and only 4 of the 11 contain any stat/number/data words. So the model is not keying purely on length or on the presence of stat-words; instead it appears to fire hot_take whenever a comment contains an evaluative/assertive claim, failing to distinguish reasoned, hedged, evidence-citing analysis from provocative opinion. Measured, qualified statements ('Would really like to access the data to validate though', 'Not really an Elton Brand fan... in terms of regular season win %') still collapse to hot_take, showing the surface signal it uses is 'opinion present' rather than 'how the opinion is supported'.",
+      "direction": "analysis->hot_take",
+      "evidence_quotes": [
+        "His defensive box plus minus is gassed by his rebounds n assist",
+        "In the tweet link, it's the opposite for Embiid and Giannis. Would really like to access the data to validate though.",
+        "Philly is 3x the size of Atlanta and also has a Black plurality. Atlanta has more Black history and cultural significance though",
+        "Looked it up, apparently OKC later flipped Horford for Kemba and the pick that became Alperen Sengün."
+      ],
+      "strength": 0.85
+    },
+    {
+      "name": "Stat-words do NOT reliably drive the label (refutes surface-stat hypothesis)",
+      "description": "Counter-pattern worth flagging: the hypothesis that the model keys on stat-words to assign analysis (or hot_take) is not supported. Among the 11 analysis->hot_take errors, only 4 contain stat/number/data terms, and one stat-laden comment ('His defensive box plus minus is gassed by his rebounds n assist') is still pushed OUT of analysis into hot_take. Conversely, short non-statistical lines get strong labels. So presence of stat-words is neither necessary nor sufficient for the model's analysis decision; the model is missing analysis recall (0.48, worst class) across both statistical and non-statistical reasoning alike. The surface cue actually in play is tone/assertiveness, not stat vocabulary.",
+      "direction": "analysis->hot_take (with and without stat-words)",
+      "evidence_quotes": [
+        "His defensive box plus minus is gassed by his rebounds n assist",
+        "Not really an Elton Brand fan (he's not very good) but he was never a tank commander. In terms of regular season win %, this season (53.7% win rate) was his worst season.",
+        "And he had downfalls that came with being a one man offense Competitive teams like the Celtics who have elite scorers would not want touches shifting towards Russ",
+        "He never had the media behind him like a player of his caliber usually does."
+      ],
+      "strength": 0.6
+    },
+    {
+      "name": "Banter and reaction conflated by tone, independent of length",
+      "description": "Casual, joking, or anecdotal comments are swapped between banter and reaction in both directions across the entire length range (8 swaps from 60 to 412 chars), so this is not a short-vs-long effect. The model cannot separate playful in-group joking (banter) from genuine emotional response to an event (reaction); whenever a comment narrates an anecdote or event the label drifts to reaction, and when it states a light judgment it drifts to banter. Length does not predict which way it goes, indicating the model relies on shallow tonal/topical surface cues rather than the comment's communicative intent.",
+      "direction": "banter->reaction",
+      "evidence_quotes": [
+        "It was very funny when he said he and Jokic were the best duo in the NBA. Jokic doing a LOT of hard-carrying in that statement.",
+        "Weird Jefferson said it was just a hard playoff foul when it happened to us earlier in the game.",
+        "They did! I was just fucking around. I had some bananas and white chocolate chips, so I figured I would throw something together.",
+        "Such a good teammate man. This team has the championship DNA"
+      ],
+      "strength": 0.6
+    },
+    {
+      "name": "Short figurative/terse banter and reaction pulled into hot_take",
+      "description": "Short, punchy lines that are jokes (banter) or light emotional responses (reaction) get read as strong opinions (hot_take). Because the surface form is a brief, assertive-sounding sentence, the model treats it as a take. This compounds the hot_take-sink and short-text effects: low context plus assertive surface form equals confident hot_take. Five of the hot_take false positives are true banter and three are true reaction, several of them short.",
+      "direction": "banter/reaction->hot_take",
+      "evidence_quotes": [
+        "At this point, he's worse than a traffic cone.",
+        "It was for OKC to take Al Horford, lmao",
+        "If it keeps him healthy then by all means lmao",
+        "his body control is crazy. my guy can bend his upper and lower body x10 while in the air."
+      ],
+      "strength": 0.55
+    },
+    {
+      "name": "Deadpan/Roleplay Banter Read as Sincere Reaction",
+      "description": "Jokes delivered in a flat, declarative, 'sincere' register, especially roleplay/impersonation and mock-earnest setups, lack overt humor markers (no 'lmao', no insult). The model has no signal for the ironic frame and defaults the deadpan tone to a genuine reaction/comment. This is the cleanest 'misses the joke' failure: banter that performs sincerity gets taken at face value.",
+      "direction": "banter->reaction",
+      "evidence_quotes": [
+        "Hey there GG! KMidd here, just wanted to say I wana start building a relationship with you! To start, please send me the 16 digits on the back of your credit card",
+        "It was very funny when he said he and Jokic were the best duo in the NBA. Jokic doing a LOT of hard-carrying in that statement.",
+        "Weird Jefferson said it was just a hard playoff foul when it happened to us earlier in the game.",
+        "didn't think anyone could be from Rushville. never ever heard anyone from outside that area mention Rushville"
+      ],
+      "strength": 0.85
+    },
+    {
+      "name": "Hyperbolic/Mock-Serious Banter Read as Hot Take",
+      "description": "Comedic exaggeration and mock-grumpy bits use the same forceful, opinionated surface form as a real spicy opinion (strong claim + emphatic tone). The model latches onto the assertive surface and the comparison/superlative structure, classifying the joke as a sincere hot_take. It cannot tell intentional absurd overstatement (humor) from a genuine bold opinion.",
+      "direction": "banter->hot_take",
+      "evidence_quotes": [
+        "At this point, he's worse than a traffic cone.",
+        "Maybe, I can't wait to be old and grumpy and call everyone that cares about it \"nephews\". Back in my day, we didn't have the in-seasom tournament",
+        "It was for OKC to take Al Horford, lmao",
+        "This, the dude did a 180 on his commitment to Italy. To be fair though, Kobe Bryant never played for Italy"
+      ],
+      "strength": 0.78
+    },
+    {
+      "name": "Self-Deprecating/Casual Joking Read as Reaction",
+      "description": "First-person, low-stakes joking and self-aware asides ('I was just fucking around') are conversational humor, but their personal/emotional surface and 'lmao'/'Lol' markers overlap with genuine reactions. The model maps the affective, chatty tone to reaction rather than recognizing the playful banter intent, collapsing the humor frame into sincere expression.",
+      "direction": "banter->reaction",
+      "evidence_quotes": [
+        "They did! I was just fucking around. I had some bananas and white chocolate chips, so I figured I would throw something together",
+        "Lmao edited. Sorry, I just watch a lot of ball with ideas in my head but no where to really talk it out with anyone in good faith"
+      ],
+      "strength": 0.62
+    },
+    {
+      "name": "Surface Humor Markers Trigger Banter False Positives on Sincere Hot Takes",
+      "description": "The inverse error: genuine opinions/insults that carry banter-like surface cues (slang, mockery framing, 'GOAT shit', name-calling, dunking on a player) get pulled into banter. The model appears to over-rely on tone/slang as a banter signal, so sincere but playfully-worded hot_takes are misread as not-serious. Shows the banter boundary is keyed to surface style, not actual comedic intent.",
+      "direction": "hot_take->banter",
+      "evidence_quotes": [
+        "This is why Steph is my 2nd favorite player in the NBA behind Giannis. Just GOAT shit",
+        "PG tried to diss Intuit Dome saying theres no fans but it's making him look like he doesn't know shit",
+        "Dumbass acting like the roster isnt his fault...",
+        "He’s right to say it."
+      ],
+      "strength": 0.6
+    },
+    {
+      "name": "Reaction Pragmatics Mistaken for Hot Take When Evaluative",
+      "description": "Genuine in-the-moment reactions that contain any evaluative or judgmental wording get over-read as opinions (hot_takes). The model treats the presence of a value judgment as a take, missing that the pragmatic function is an emotional/spontaneous reaction to something just seen, not a staked-out controversial position. Confirmed by the confusion matrix (reaction is most often confused upward into hot_take/banter).",
+      "direction": "reaction->hot_take",
+      "evidence_quotes": [
+        "If it keeps him healthy then by all means lmao",
+        "his body control is crazy. my guy can bend his upper and lower body x10 while in the air.",
+        "Insane athlete. I always wondered how good he could be if his BBIQ improved and we're finally seeing it this season",
+        "Oh boy the rest of my cousins (big Kobe fans), have lost a lot of the energy when LeBron came"
+      ],
+      "strength": 0.55
+    },
+    {
+      "name": "Sarcasm Discussed/Detected by Author Still Mislabeled",
+      "description": "Even when the text itself flags irony/sarcasm explicitly, the model misses the pragmatic resolution. In one case the author literally identifies a sarcastic comment and then gives a sincere analytical correction, yet the model reads the whole thing as a hot_take. Indicates the model keys on the word 'sarcastic'/spicy framing rather than parsing who is being ironic and what the speaker's actual stance is.",
+      "direction": "analysis->hot_take",
+      "evidence_quotes": [
+        "I think that was a sarcastic comment. Being blown out like that in game 2, with the whole world declaring wolves arrival in a historical stage, and coming back to win the next 3 is quite great coaching",
+        "It's an incredibly reactionary list."
+      ],
+      "strength": 0.42
+    },
+    {
+      "name": "Overconfident analysis -> hot_take collapse",
+      "description": "The single largest error cluster: true analysis comments (sourced/measured/reasoned takes) are misclassified as hot_take, and almost always at extreme confidence. 7 of the 11 analysis->hot_take errors fire at >=0.94 confidence (5 at >=0.97), yet every one is wrong. The model treats any opinionated, argumentative, or evaluative phrasing inside analysis as a hot_take and commits hard, driving analysis recall down to 0.48. This is the dominant driver of poor calibration: the model is maximally certain exactly where it is systematically wrong.",
+      "direction": "analysis->hot_take",
+      "evidence_quotes": [
+        "Also an Olympic gold. He's had a great career.",
+        "Philly is 3x the size of Atlanta and also has a Black plurality. Atlanta has more Black history and cultural significance though",
+        "In the tweet link, it's the opposite for Embiid and Giannis. Would really like to access the data to validate though.",
+        "His defensive box plus minus is gassed by his rebounds n assist"
+      ],
+      "strength": 0.95
+    },
+    {
+      "name": "hot_take as overconfident default sink",
+      "description": "hot_take is the model's high-confidence fallback class. It is over-predicted (precision only 0.486) and 9 of the 19 errors that land on hot_take do so at >=0.94 confidence. Errors flow INTO hot_take from every other true class (analysis x7, banter x5, reaction x3) at near-certain confidence. The model resolves uncertainty by confidently asserting hot_take rather than spreading probability, which is the core mechanism behind the 0.317 ECE.",
+      "direction": "*->hot_take",
+      "evidence_quotes": [
+        "At this point, he's worse than a traffic cone.",
+        "If it keeps him healthy then by all means lmao",
+        "his body control is crazy. my guy can bend his upper and lower body x10 while in the air.",
+        "It was for OKC to take Al Horford, lmao"
+      ],
+      "strength": 0.85
+    },
+    {
+      "name": "Inverted calibration in the 0.70-0.90 band",
+      "description": "The calibration bins are not just inflated, they are inverted in the mid-high range. The 0.70-0.80 bin (n=10, avg_conf 0.758) has only 0.30 accuracy and the 0.80-0.90 bin (n=9, avg_conf 0.863) has only 0.33 accuracy, both far WORSE than the low-confidence 0.25-0.50 bin (0.50 acc) and the top 0.90-1.00 bin (0.67 acc). Confidence in the 0.70-0.90 region is anti-predictive: a 0.75-0.86 score signals an error more often than a correct call. Multiple wrong predictions sit squarely in this trap zone.",
+      "direction": "calibration->miscalibrated",
+      "evidence_quotes": [
+        "His father, Tim, is one of the most successful coaches in WPIAL",
+        "Such a good teammate man. This team has the championship DNA",
+        "This is why Steph is my 2nd favorite player in the NBA behind Giannis. Just GOAT shit",
+        "PG tried to diss Intuit Dome saying theres no fans but it's making him look like he doesn't know shit"
+      ],
+      "strength": 0.8
+    },
+    {
+      "name": "Confident misreading of casual banter as reaction",
+      "description": "True banter (jokes, riffs, in-group bits) is repeatedly misread as reaction, and 5 of the 6 banter->reaction errors fire at >=0.88 confidence (one at 0.981). The model mistakes the conversational/first-person tone of a joke for a sincere reaction and commits with very high certainty. This is a stable directional pair (6 occurrences) almost entirely in the overconfident regime.",
+      "direction": "banter->reaction",
+      "evidence_quotes": [
+        "Lmao edited. Sorry, I just watch a lot of ball with ideas in my head but no where to really talk it out",
+        "Weird Jefferson said it was just a hard playoff foul when it happened to us earlier in the game.",
+        "Hey there GG! KMidd here, just wanted to say I wana start building a relationship with you!",
+        "It was very funny when he said he and Jokic were the best duo in the NBA."
+      ],
+      "strength": 0.7
+    },
+    {
+      "name": "Top-bin overconfidence (near-1.0 scores on wrong calls)",
+      "description": "Even the 0.90-1.00 bin, where the model is most accurate (0.67), is badly overconfident: avg_conf 0.968 against 0.67 accuracy is a ~30-point gap, and this bin holds 58 of 89 scored examples. Within wrong_predictions, 12 errors exceed 0.95 confidence including five at 0.97-0.986. The model routinely emits near-certain probabilities on incorrect predictions, so high confidence cannot be trusted as a correctness signal at any threshold.",
+      "direction": "highconf->error",
+      "evidence_quotes": [
+        "At this point, he's worse than a traffic cone.",
+        "Love the display of all the high school jerseys in California. The courts outside are great too.",
+        "Also an Olympic gold. He's had a great career.",
+        "The biggest reason you won the series (by far) is Kawhi being injured."
+      ],
+      "strength": 0.75
+    }
+  ],
+  "synthesis": {
+    "top_failure_pattern": "analysis -> hot_take is the dominant, highest-confidence failure mode. 11 of 23 true-analysis items (and 11 of 12 analysis errors) are predicted hot_take; 7 of those 11 fire at >=0.94 confidence and 5 at >=0.97. This single direction is the largest cell off the diagonal and is the primary driver of both the worst-class recall (analysis recall 0.48 vs precision 0.85) and the catastrophic calibration (ECE 0.317): the model is maximally certain exactly where it is systematically wrong. The mechanism is that the model fires hot_take whenever an evaluative/assertive claim is present, regardless of whether it is hedged, sourced, or reasoned.",
+    "verified_patterns": [
+      {
+        "name": "Analysis collapses into hot_take (overconfident)",
+        "evidence": "Confusion matrix analysis row [11,11,1,0]: 11 of 12 analysis errors -> hot_take. The 11 analysis->hot_take confidences are 0.974,0.974,0.972,0.97,0.97,0.952,0.944,0.79,0.786,0.748,0.655 -> 7 at >=0.94, 5 at >=0.97. Recall 0.48 vs precision 0.85 confirmed. Quotes ('tweet link...data to validate though', 'defensive box plus minus is gassed by his rebounds n assist', 'Philly is 3x the size of Atlanta', 'Not really an Elton Brand fan...53.7% win rate') all present in wrong_predictions.",
+        "why_it_happens": "The model keys on surface assertiveness/'opinion present' rather than how a claim is supported. Hedges ('would really like to validate'), citations ('looked it up'), and stat reasoning do not move it back toward analysis; any staked evaluative claim reads as a spicy take.",
+        "verified": true
+      },
+      {
+        "name": "hot_take is an over-predicted attractor / default sink",
+        "evidence": "19 wrong predictions land on hot_take: analysis x11, banter x5, reaction x3 (matches matrix columns: analysis[1]=11, reaction[1]=3, banter[1]=5). hot_take precision 0.486 vs recall 0.692. 9+ of these land at >=0.94 confidence. Errors flow into hot_take from every other class, confirming an attractor effect rather than a single-neighbor confusion.",
+        "why_it_happens": "hot_take is the high-prior evaluative class; when the model detects any judgment it resolves ambiguity by confidently asserting hot_take instead of spreading probability mass, which is the core mechanism behind the high ECE.",
+        "verified": true
+      },
+      {
+        "name": "Banter scatters into reaction and hot_take",
+        "evidence": "Banter row [0,5,6,13]: 11 errors, 6 -> reaction, 5 -> hot_take. banter recall 0.54. Quotes confirmed: 'very funny when he said he and Jokic were the best duo' (banter->reaction), 'Weird Jefferson said it was just a hard playoff foul' (banter->reaction), KMidd credit-card roleplay (banter->reaction), Rushville (banter->reaction).",
+        "why_it_happens": "Banter has the weakest containment; the model has no model of the ironic/in-group joking frame, so it routes jokes to whichever sincere class their surface tone most resembles (affective -> reaction, assertive -> hot_take).",
+        "verified": true
+      },
+      {
+        "name": "Confident misreading of casual banter as reaction",
+        "evidence": "6 banter->reaction errors with confidences 0.981,0.936,0.923,0.888,0.882,0.491 -> 5 of 6 at >=0.88, one at 0.981. Stable directional pair (matrix banter[2]=6). Quotes verified.",
+        "why_it_happens": "First-person, conversational/anecdotal tone of a joke overlaps with the affective surface of a sincere reaction; the model commits hard on that tonal cue.",
+        "verified": true
+      },
+      {
+        "name": "hot_take <-> banter reciprocal confusion",
+        "evidence": "4 hot_take->banter (matrix hot_take[3]=4: 'Dumbass acting like the roster isnt his fault', 'This is why Steph is my 2nd favorite...Just GOAT shit', 'PG tried to diss Intuit Dome...doesn't know shit', 'He's right to say it') and 5 banter->hot_take (matrix banter[1]=5). This is the largest bidirectional pair (9 total).",
+        "why_it_happens": "Slang, name-calling, and mockery framing ('GOAT shit', 'Dumbass', 'doesn't know shit') are read as not-serious banter cues even when the intent is a sincere insulting/praising take, and conversely jokey assertions read as takes.",
+        "verified": true
+      },
+      {
+        "name": "Reaction confused with hot_take when evaluative",
+        "evidence": "3 of 5 reaction errors -> hot_take (matrix reaction[1]=3): 'If it keeps him healthy then by all means lmao' (0.963), 'his body control is crazy...bend his upper and lower body x10' (0.861), 'Oh boy the rest of my cousins...Uber critical of his game' (0.75). Quote 'Insane athlete...BBIQ improved' cited by pattern 15 is actually a true hot_take->reaction item, not reaction->hot_take.",
+        "why_it_happens": "A value-laden word inside an in-the-moment emotional reaction is treated as a staked-out position; the model misses that the pragmatic function is spontaneous response, not a controversial claim. (Smallest-support direction; one cited quote is misattributed.)",
+        "verified": true
+      },
+      {
+        "name": "Stat-words do NOT reliably drive the label (counter-pattern)",
+        "evidence": "Among 11 analysis->hot_take errors only ~4 contain stat/number/data terms, and a stat-laden line ('defensive box plus minus...rebounds n assist') is still pushed OUT of analysis. Misread analyses span 46-326 chars. Supports that the cue is assertive tone, not stat vocabulary.",
+        "why_it_happens": "Refutes the surface-stat hypothesis: presence of numbers is neither necessary nor sufficient for an analysis prediction; tone/assertiveness dominates. Useful as a flag that the obvious 'it just counts stat words' story is wrong.",
+        "verified": true
+      },
+      {
+        "name": "Inverted calibration in the 0.70-0.90 band",
+        "evidence": "Directly from calibration.bins: 0.70-0.80 n=10 acc 0.30 avg_conf 0.758; 0.80-0.90 n=9 acc 0.33 avg_conf 0.863. Both WORSE than 0.25-0.50 (acc 0.50) and 0.90-1.00 (acc 0.67). Mid-high confidence is anti-predictive.",
+        "why_it_happens": "The model is well-calibrated only at the extremes; the 0.70-0.90 band concentrates genuinely ambiguous cross-class items it resolves wrongly, so a 0.75-0.86 score signals an error more often than a correct call.",
+        "verified": true
+      },
+      {
+        "name": "Top-bin overconfidence (near-1.0 on wrong calls)",
+        "evidence": "0.90-1.00 bin: avg_conf 0.968 vs accuracy 0.67 (~30pt gap), holds 58 of 86 examples. 12 errors at >=0.95 confidence (0.986,0.984,0.981,0.974,0.974,0.972,0.97,0.97,0.97,0.963,0.962,0.952). ECE 0.317.",
+        "why_it_happens": "The model emits near-certain probabilities even when wrong, so high confidence is not a usable correctness signal at any threshold. NOTE: pattern text says '58 of 89 scored examples' — the correct denominator is 86 (test_size); minor numeric error, substance holds.",
+        "verified": true
+      },
+      {
+        "name": "Confident failure on short / low-context comments",
+        "evidence": "Short errors (<=60 chars) include traffic cone (0.986), 'Also an Olympic gold...' (0.974), 'He's right to say it' (0.916), 'incredibly reactionary list' (0.924), 'If it keeps him healthy...lmao' (0.963), 'It was for OKC to take Al Horford, lmao' (0.925), 'championship DNA' (0.783) — ~6 of 7 at >=0.90. Directionally supported.",
+        "why_it_happens": "With little context the model latches onto a single surface cue and commits at high confidence rather than hedging. FLAG: the exact '8 items / 7 at >=0.90 / mean 0.93' counts are threshold-fragile depending on char-count boundaries; treat the precise numbers as approximate, the effect as real.",
+        "verified": true
+      },
+      {
+        "name": "Deadpan/Roleplay Banter Read as Sincere Reaction",
+        "evidence": "KMidd credit-card phishing roleplay (banter->reaction 0.888), 'very funny when he said...Jokic doing a LOT of hard-carrying' (banter->reaction 0.882), 'Weird Jefferson said it was just a hard playoff foul' (banter->reaction 0.923), Rushville (banter->reaction 0.491). All four are real banter->reaction items in the deadpan/flat register.",
+        "why_it_happens": "Jokes delivered in a flat declarative register with no overt humor markers (no 'lmao', no insult) give the model no ironic-frame signal, so it takes the sincere-sounding surface at face value. This is the cleanest 'misses the joke' subset of banter->reaction and its quotes are all correctly attributed.",
+        "verified": true
+      }
+    ],
+    "captured_vs_intended": "The labels intend pragmatic INTENT — argue (analysis), assert a staked opinion (hot_take), express in-the-moment feeling (reaction), amuse/joke (banter). The model did not learn intent; it learned a single surface axis of 'evaluative assertiveness' and collapses everything toward the hot_take pole on it. Concretely: a hedged, sourced ARGUMENT ('Would really like to access the data to validate though'; 'in terms of regular season win %, 53.7% win rate was his worst season') is read as a spicy ASSERTION purely because it contains a judgment — the model never represents HOW a claim is supported, only THAT a claim is present, so 11 of 12 analysis errors land on hot_take, often at 0.97. The same blindness to intent shows on the affective side: jokes (banter) have no ironic-frame feature, so a deadpan phishing-roleplay or a 'just fucking around' aside is taken literally as a sincere REACTION, and a value-laden emotional outburst ('his body control is crazy...bend his body x10') is taken as a staked TAKE. The decisive evidence that this is surface-feature learning and not intent: it is NOT explained by length (errors span 46-326 chars) and NOT by stat-vocabulary (a stat-laden 'defensive box plus minus' line is still pushed out of analysis), and the model is MOST confident (>=0.97) exactly on the analysis->hot_take cases it gets wrong. The classifier captured 'does this sound like a forceful opinion?' when the task intended 'what is the speaker trying to DO — reason, assert, feel, or joke?'",
+    "rejected_or_weak": [
+      "Sarcasm Discussed/Detected by Author Still Mislabeled (strength 0.42): WEAK/INCOHERENT. Its two quotes come from different error directions — 'I think that was a sarcastic comment...' is analysis->hot_take (0.944), but 'It's an incredibly reactionary list.' is hot_take->reaction (0.924), not analysis->hot_take as the pattern's direction claims. A single anecdotal example ('sarcastic comment') cannot support a distinct mechanism; it is already covered by the analysis->hot_take pattern. Reject as a standalone pattern.",
+      "Reaction Pragmatics Mistaken for Hot Take When Evaluative (strength 0.55): MISATTRIBUTED QUOTE. Cites 'Insane athlete...BBIQ improved...finally seeing it this season' as reaction->hot_take, but in the data that item is true=hot_take, pred=reaction (0.884) — the OPPOSITE direction. The core claim (reaction->hot_take, 3 cases) is real and kept under 'Reaction confused with hot_take', but this specific framing's evidence is partly wrong; flag the misattribution.",
+      "Self-Deprecating/Casual Joking Read as Reaction (strength 0.62): WEAK. Only 2 supporting items ('I was just fucking around' 0.936; 'Lmao edited...no where to really talk it out' 0.981), and it overlaps entirely with the broader banter->reaction pattern. Real but too thin to stand alone as a separate mechanism; merge into banter->reaction.",
+      "Hyperbolic/Mock-Serious Banter Read as Hot Take (strength 0.78): PARTIALLY MISATTRIBUTED. 'old and grumpy...nephews' (banter->hot_take 0.872) and 'It was for OKC to take Al Horford, lmao' (banter->hot_take 0.925) and 'traffic cone' (banter->hot_take 0.986) support it, but 'This, the dude did a 180...Kobe Bryant never played for Italy' is banter->hot_take too so OK — the direction is valid (5 banter->hot_take exist). Keep the direction but the 'hyperbolic/mock-serious' sub-theme is an interpretive label, not separately verifiable; subsume under banter<->hot_take reciprocal confusion.",
+      "Short figurative/terse banter and reaction pulled into hot_take (strength 0.55) and Surface Humor Markers Trigger Banter False Positives on Sincere Hot Takes (strength 0.6): both are RESTATEMENTS of already-verified patterns (banter/reaction->hot_take, and hot_take->banter respectively) with no additional distinct mechanism. Redundant — fold into the attractor and reciprocal-confusion patterns rather than counting as separate findings.",
+      "Banter and reaction conflated by tone, independent of length (strength 0.6): the length-independence claim is plausible (banter errors span the full range) but the specific '8 swaps from 60 to 412 chars' count is not exactly verifiable from the data (banter has 11 errors total: 6->reaction, 5->hot_take; reaction has 2->banter). The directional substance is already captured; treat the precise swap count as unverified.",
+      "NUMERIC ERRORS TO FLAG ACROSS PATTERNS: (a) Top-bin pattern says '58 of 89 scored examples' — denominator is 86, not 89. (b) Several 'short text' threshold counts (8 items / 7 at >=0.90 / mean 0.93) are boundary-fragile. (c) test_size is 86 and calibration bins sum to 86, so any claim referencing a different N is off."
+    ]
+  }
+}

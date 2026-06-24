@@ -1,0 +1,430 @@
+{
+  "test_size": 86,
+  "fine_tuned": {
+    "model": "distilbert-base-uncased (fine-tuned)",
+    "accuracy": 0.5813953488372093,
+    "macro_f1": 0.5801310446659285,
+    "weighted_f1": 0.5855541820117266,
+    "per_class": {
+      "analysis": {
+        "precision": 0.8461538461538461,
+        "recall": 0.4782608695652174,
+        "f1": 0.6111111111111112,
+        "support": 23
+      },
+      "hot_take": {
+        "precision": 0.4864864864864865,
+        "recall": 0.6923076923076923,
+        "f1": 0.5714285714285714,
+        "support": 26
+      },
+      "reaction": {
+        "precision": 0.47058823529411764,
+        "recall": 0.6153846153846154,
+        "f1": 0.5333333333333333,
+        "support": 13
+      },
+      "banter": {
+        "precision": 0.6842105263157895,
+        "recall": 0.5416666666666666,
+        "f1": 0.6046511627906976,
+        "support": 24
+      }
+    }
+  },
+  "baseline": {
+    "model": "llama-3.3-70b-versatile",
+    "accuracy": 0.6744186046511628,
+    "macro_f1": 0.6639705882352941,
+    "weighted_f1": 0.6979670162638699,
+    "per_class": {
+      "analysis": {
+        "precision": 1.0,
+        "recall": 0.7391304347826086,
+        "f1": 0.85,
+        "support": 23.0
+      },
+      "hot_take": {
+        "precision": 0.72,
+        "recall": 0.6923076923076923,
+        "f1": 0.7058823529411765,
+        "support": 26.0
+      },
+      "reaction": {
+        "precision": 0.30434782608695654,
+        "recall": 0.5384615384615384,
+        "f1": 0.3888888888888889,
+        "support": 13.0
+      },
+      "banter": {
+        "precision": 0.7619047619047619,
+        "recall": 0.6666666666666666,
+        "f1": 0.7111111111111111,
+        "support": 24.0
+      }
+    },
+    "unparseable": 2,
+    "n_test": 86
+  },
+  "confusion_matrix": {
+    "labels": [
+      "analysis",
+      "hot_take",
+      "reaction",
+      "banter"
+    ],
+    "matrix": [
+      [
+        11,
+        11,
+        1,
+        0
+      ],
+      [
+        2,
+        18,
+        2,
+        4
+      ],
+      [
+        0,
+        3,
+        8,
+        2
+      ],
+      [
+        0,
+        5,
+        6,
+        13
+      ]
+    ],
+    "markdown": "| true \\ pred | analysis | hot_take | reaction | banter |\n|---|---|---|---|---|\n| **analysis** | 11 | 11 | 1 | 0 |\n| **hot_take** | 2 | 18 | 2 | 4 |\n| **reaction** | 0 | 3 | 8 | 2 |\n| **banter** | 0 | 5 | 6 | 13 |\n"
+  },
+  "wrong_predictions": [
+    {
+      "text": "At this point, he's worse than a traffic cone.",
+      "true": "banter",
+      "pred": "hot_take",
+      "confidence": 0.986
+    },
+    {
+      "text": "Love the display of all the high school jerseys in California. The courts outside are great too.",
+      "true": "reaction",
+      "pred": "banter",
+      "confidence": 0.984
+    },
+    {
+      "text": "Lmao edited. Sorry, I just watch a lot of ball with ideas in my head but no where to really talk it out with anyone in good faith, so it comes out pretty long",
+      "true": "banter",
+      "pred": "reaction",
+      "confidence": 0.981
+    },
+    {
+      "text": "Also an Olympic gold. He's had a great career.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.974
+    },
+    {
+      "text": "And he had downfalls that came with being a one man offense Competitive teams like the Celtics who have elite scorers would not want touches shifting towards Russ which is what would happen Even in okc when he was peaking, he would take too many shots away from kd",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.974
+    },
+    {
+      "text": "Philly is 3x the size of Atlanta and also has a Black plurality. Atlanta has more Black history and cultural significance though",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.972
+    },
+    {
+      "text": "The biggest reason you won the series (by far) is Kawhi being injured. The second biggest reason is Paul George turning into Pandemic P. I don't think Westbrook is in the top 5 when it comes to \"reasons you won the series\".",
+      "true": "hot_take",
+      "pred": "analysis",
+      "confidence": 0.97
+    },
+    {
+      "text": "Looked it up, apparently OKC later flipped Horford for Kemba and the pick that became Alperen Sengün. What I don't get is how Houston ended up with Sengün without OKC getting anything out of it.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.97
+    },
+    {
+      "text": "In the tweet link, it's the opposite for Embiid and Giannis. Would really like to access the data to validate though.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.97
+    },
+    {
+      "text": "If it keeps him healthy then by all means lmao",
+      "true": "reaction",
+      "pred": "hot_take",
+      "confidence": 0.963
+    },
+    {
+      "text": "Dumbass acting like the roster isnt his fault...",
+      "true": "hot_take",
+      "pred": "banter",
+      "confidence": 0.962
+    },
+    {
+      "text": "> faked mental health issues The media has been roasting him for years now when it's been apparent he had a back injury. He was afraid of minor contact in the paint. His mental health issues are real.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.952
+    },
+    {
+      "text": "I think that was a sarcastic comment. Being blown out like that in game 2, with the whole world declaring wolves arrival in a historical stage, and coming back to win the next 3 is quite great coaching. Too bad they didn't have enough in the end. And Malone is probably honest saying the team just wore down.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.944
+    },
+    {
+      "text": "Abso-fucking-lutely not. Challenges have already saved us from so many unfair results. I agree with trying to speed it up - the solution is automatic AI review. Remove the humans from the loop - it's the humans that make the game slow.",
+      "true": "hot_take",
+      "pred": "analysis",
+      "confidence": 0.937
+    },
+    {
+      "text": "They did! I was just fucking around. I had some bananas and white chocolate chips, so I figured I would throw something together. Could have used some sort of nuts(maybe pecans) to balance them out a bit, but they satisfied the sweet tooth for sure. I’m generally making dinner or baking something after work to wind down and relax, so I’m often watching games on my phone in the kitchen during the playoffs. Lol",
+      "true": "banter",
+      "pred": "reaction",
+      "confidence": 0.936
+    },
+    {
+      "text": "It was for OKC to take Al Horford, lmao",
+      "true": "banter",
+      "pred": "hot_take",
+      "confidence": 0.925
+    },
+    {
+      "text": "It's an incredibly reactionary list.",
+      "true": "hot_take",
+      "pred": "reaction",
+      "confidence": 0.924
+    },
+    {
+      "text": "Weird Jefferson said it was just a hard playoff foul when it happened to us earlier in the game.",
+      "true": "banter",
+      "pred": "reaction",
+      "confidence": 0.923
+    },
+    {
+      "text": "He’s right to say it.",
+      "true": "hot_take",
+      "pred": "banter",
+      "confidence": 0.916
+    },
+    {
+      "text": "Hey there GG! KMidd here, just wanted to say I wana start building a relationship with you! To start, please send me the 16 digits on the back of your credit card, alongside the 3 digit VIN AND the expiration date. See you on the courts pal!",
+      "true": "banter",
+      "pred": "reaction",
+      "confidence": 0.888
+    },
+    {
+      "text": "Insane athlete. I always wondered how good he could be if his BBIQ improved and we're finally seeing it this season",
+      "true": "hot_take",
+      "pred": "reaction",
+      "confidence": 0.884
+    },
+    {
+      "text": "It was very funny when he said he and Jokic were the best duo in the NBA. Jokic doing a LOT of hard-carrying in that statement.",
+      "true": "banter",
+      "pred": "reaction",
+      "confidence": 0.882
+    },
+    {
+      "text": "Maybe, I can't wait to be old and grumpy and call everyone that cares about it \"nephews\". Back in my day, we didn't have the in-seasom tournament or \"clutch player of the year\", you either won the Finals or you were a loser!",
+      "true": "banter",
+      "pred": "hot_take",
+      "confidence": 0.872
+    },
+    {
+      "text": "his body control is crazy. my guy can bend his upper and lower body x10 while in the air.",
+      "true": "reaction",
+      "pred": "hot_take",
+      "confidence": 0.861
+    },
+    {
+      "text": "This, the dude did a 180 on his commitment to Italy. To be fair though, Kobe Bryant never played for Italy",
+      "true": "banter",
+      "pred": "hot_take",
+      "confidence": 0.838
+    },
+    {
+      "text": "His father, Tim, is one of the most successful coaches in WPIAL (Western Pennsylvania Interscholastic Athletic League) history. After many successful runs with the Chartiers Valley High School Boys and Girls basketball teams, he became the head coach of the Bishop Canevin High School Boys basketball team",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.79
+    },
+    {
+      "text": "His defensive box plus minus is gassed by his rebounds n assist",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.786
+    },
+    {
+      "text": "Such a good teammate man. This team has the championship DNA",
+      "true": "reaction",
+      "pred": "banter",
+      "confidence": 0.783
+    },
+    {
+      "text": "Oh boy the rest of my cousins (big Kobe fans), have lost a lot of the energy when LeBron came. Uber critical of his game + the team, bringing up comparisons to all the Kobe teams",
+      "true": "reaction",
+      "pred": "hot_take",
+      "confidence": 0.75
+    },
+    {
+      "text": "He never had the media behind him like a player of his caliber usually does. Partly bc he never had an agent in Houston that would leverage their power and a lot of people were frustrated by his playstyle. Market has something to do with it too, Houston is a huge city but the fanbase is relatively small compared to LA/NY/Chi",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.748
+    },
+    {
+      "text": "This is why Steph is my 2nd favorite player in the NBA behind Giannis. Just GOAT shit",
+      "true": "hot_take",
+      "pred": "banter",
+      "confidence": 0.746
+    },
+    {
+      "text": "PG tried to diss Intuit Dome saying theres no fans but it's making him look like he doesn't know shit",
+      "true": "hot_take",
+      "pred": "banter",
+      "confidence": 0.703
+    },
+    {
+      "text": "Not really an Elton Brand fan (he's not very good) but he was never a tank commander. In terms of regular season win %, this season (53.7% win rate) was his worst season. As a player? Absolutely, though he didn't really play a lot of games with the Sixers.",
+      "true": "analysis",
+      "pred": "hot_take",
+      "confidence": 0.655
+    },
+    {
+      "text": "Lakers fan 12/25, both Nuggets and Warriors losing trap games lmao.",
+      "true": "banter",
+      "pred": "hot_take",
+      "confidence": 0.518
+    },
+    {
+      "text": "didn't think anyone could be from Rushville. never ever heard anyone from outside that area mention Rushville, Indiana. that is wild. hell yeah, man. I know you got some crazy relatives if they come from Rushville.",
+      "true": "banter",
+      "pred": "reaction",
+      "confidence": 0.491
+    },
+    {
+      "text": "I was 50/50 on if this was a flagrant or not but I just cannot comprehend how this isn't a \"windup\", do you need to do a windmill with your arms for it to be a windup?",
+      "true": "analysis",
+      "pred": "reaction",
+      "confidence": 0.432
+    }
+  ],
+  "sample_classifications": [
+    {
+      "text": "If anything this is basically the next version of the Giannis/Middleton/Jrue/Brook model (ie, competency... slow build the core to a super high level and strike while the iron is hot to make the jump), not a superteam. Come to think of it, that's the Raptors too. And probably just the normal way to build a team.",
+      "true": "analysis",
+      "pred": "analysis",
+      "confidence": 0.992,
+      "correct": true,
+      "probs": {
+        "analysis": 0.992,
+        "hot_take": 0.004,
+        "reaction": 0.002,
+        "banter": 0.002
+      }
+    },
+    {
+      "text": "I would rather brunson take the offseason off, he already did FIBA last year",
+      "true": "hot_take",
+      "pred": "hot_take",
+      "confidence": 0.992,
+      "correct": true,
+      "probs": {
+        "analysis": 0.003,
+        "hot_take": 0.992,
+        "reaction": 0.002,
+        "banter": 0.003
+      }
+    },
+    {
+      "text": "No there was more spacing league wide in prime Harden's era due to the increased focus on 3 point shooting that started with the 2014 Spurs and 2015 Warriors. Every team started playing that drive and kick to shooter offense. During Kobe's era that wasn't really a thing, everyone was trying to score inside a lot more.",
+      "true": "analysis",
+      "pred": "analysis",
+      "confidence": 0.992,
+      "correct": true,
+      "probs": {
+        "analysis": 0.992,
+        "hot_take": 0.004,
+        "reaction": 0.002,
+        "banter": 0.002
+      }
+    },
+    {
+      "text": "I can't wait for the tell-all book on this. Or the netflix/ESPN 30/30",
+      "true": "banter",
+      "pred": "banter",
+      "confidence": 0.468,
+      "correct": true,
+      "probs": {
+        "analysis": 0.008,
+        "hot_take": 0.057,
+        "reaction": 0.467,
+        "banter": 0.468
+      }
+    },
+    {
+      "text": "I was 50/50 on if this was a flagrant or not but I just cannot comprehend how this isn't a \"windup\", do you need to do a windmill with your arms for it to be a windup?",
+      "true": "analysis",
+      "pred": "reaction",
+      "confidence": 0.432,
+      "correct": false,
+      "probs": {
+        "analysis": 0.01,
+        "hot_take": 0.2,
+        "reaction": 0.432,
+        "banter": 0.358
+      }
+    }
+  ],
+  "calibration": {
+    "bins": [
+      {
+        "range": "0.25-0.50",
+        "n": 4,
+        "accuracy": 0.5,
+        "avg_conf": 0.47180065512657166
+      },
+      {
+        "range": "0.50-0.60",
+        "n": 3,
+        "accuracy": 0.6666666666666666,
+        "avg_conf": 0.5381436944007874
+      },
+      {
+        "range": "0.60-0.70",
+        "n": 2,
+        "accuracy": 0.5,
+        "avg_conf": 0.6310579180717468
+      },
+      {
+        "range": "0.70-0.80",
+        "n": 10,
+        "accuracy": 0.3,
+        "avg_conf": 0.7580618023872375
+      },
+      {
+        "range": "0.80-0.90",
+        "n": 9,
+        "accuracy": 0.3333333333333333,
+        "avg_conf": 0.8630191021495395
+      },
+      {
+        "range": "0.90-1.00",
+        "n": 58,
+        "accuracy": 0.6724137931034483,
+        "avg_conf": 0.9678393386561295
+      }
+    ],
+    "ece": 0.3167785316012626
+  }
+}

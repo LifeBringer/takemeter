@@ -20,6 +20,12 @@ results/
 # os
 .DS_Store
 
+# local agent config (machine-specific permissions / paths)
+.claude/settings.local.json
+
 # raw video (keep only the down-converted demo)
 demo/*.mov
 demo/raw_*.mp4
+
+# intermediate labeling batches (regenerable from candidates.csv)
+data/batches/
